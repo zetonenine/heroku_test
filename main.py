@@ -3,6 +3,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
+from postgresql import BD
 # import redis
 
 
@@ -19,8 +20,21 @@ dp.middleware.setup(LoggingMiddleware())
 
 @dp.message_handler(state=None, commands='start')
 async def starting(message: types.Message):
+    db.create()
     await message.answer('Привет!')
 
+    
+@dp.message_handler(state=None, commands='add')
+async def starting(message: types.Message):
+    db.add_user(message.from_user.id)
+    await message.answer('Добавил!')
+    
+    
+@dp.message_handler(state=None, commands='check')
+async def starting(message: types.Message):
+    obj = db.user_exists(message.from_user.id)
+    await message.answer(obj)
+    
 
 @dp.message_handler(content_types=['text'])
 async def hey(message: types.Message):
