@@ -3,7 +3,7 @@ import psycopg2
 
 class BD:
 
-    def __init__(self, user="dvasvcayevscby", password="e8b87679d0dbfeabde476ba8fef3f904aa5e1f5aeb6dcb1dd0a7dc096005eece", dbname="dadjq0evhseks", host="ec2-52-209-134-160.eu-west-1.compute.amazonaws.com
+    def __init__(self, user="wvchqdkoqufxyl", password="2ced0a7a543f2dbbf87e9852f9e1deede3d5457b57af37f599b708c3f58a4701", dbname="d3pbcui9qttpa1", host="ec2-18-204-74-74.compute-1.amazonaws.com
 "):
         self.connection = psycopg2.connect(
             user=user,
